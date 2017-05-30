@@ -1,0 +1,10 @@
+<ul *ngFor="let book of books">
+  <li>
+    {{book.id}} || {{book.author}} || {{book.title}} || {{book.price}} ||
+    <!--<md-button (click)="showBook()" class="md-raised">details</md-button>-->
+    <button type="button" (click)="showBook(book.id)">details</button>
+    <button type="button" (click)="addToCart(book)">add to cart</button>
+  </li>
+</ul>
+
+<button type="button" (click)="showShoppingCart()">shopping cart</button>
