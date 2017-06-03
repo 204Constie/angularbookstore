@@ -3,7 +3,7 @@
  */
 
 import {Injectable, Inject} from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
@@ -16,7 +16,6 @@ export class CartService {
   cartItems: CartItem[] = [];
   selectedProducts: Product[] = [];
 
-  placeOrderUrl: 'localhost:9000/orders';
 
   constructor(private http: Http){}
 
@@ -25,15 +24,18 @@ export class CartService {
     c.amount = amount;
     c.productId = productId;
     c.orderId = 0;
-    this.cartItems.push(c)
+    this.cartItems.push(c);
   }
 
   addProductToCart(product){
     this.selectedProducts.push(product);
   }
 
-  makeOrder(){
-    return this.http.post(this.placeOrderUrl, {"totalAmount": 0}).map(
+  makeOrder(totalAmount: number){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let data = JSON.stringify({"totalAmount": totalAmount})
+    return this.http.post('http://localhost:9000/orders', data, options).map(
         (response: Response) => response.json(),
         (error: Response) => console.log('error at making new order')
       )

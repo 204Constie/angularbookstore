@@ -4,16 +4,17 @@
 <ul>
   <li *ngFor="let product of selectedProducts">{{product?.title}} || amount:
     <span *ngFor="let item of cartItems">
-      <i *ngIf="product?.id === item.productId">{{item.amount}}</i>
-      <select [(ngModel)]="item.amount">
-        <option>6</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-      || price: {{product?.price * item.amount}}
+      <i *ngIf="product?.id === item.productId">{{item.amount}}
+        <select [(ngModel)]="item.amount">
+          <option>6</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        || price: {{product?.price * item.amount}}
+      </i>
     </span>
   </li>
 </ul>
