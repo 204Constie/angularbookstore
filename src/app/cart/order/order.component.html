@@ -1,0 +1,29 @@
+<p>your items:</p>
+<ul>
+  <li *ngFor="let product of selectedProducts">{{product?.title}} || amount:
+    <span *ngFor="let item of cartItems">
+      <i *ngIf="product?.id === item.productId">{{item.amount}}
+        || price: {{product?.price * item.amount}}
+      </i>
+    </span>
+  </li>
+</ul>
+
+
+
+<p>choose method of payment</p>
+
+<label for="cardpayment">card</label>
+<input type="radio" name="paymentmethod" value="card" id="cardpayment" [(ngModel)]="order.payment"><br>
+<label for="transferpayment">transfer</label>
+<input type="radio" name="paymentmethod" value="transfer" id="transferpayment" [(ngModel)]="order.payment"><br>
+
+<p>choose method of shipping</p>
+
+<label for="inpost">inpost</label>
+<input type="radio" name="shippingmethod" value="inpost" id="inpost" [(ngModel)]="order.shipment"><br>
+<label for="courier">courier</label>
+<input type="radio" name="shippingmethod" value="courier" id="courier" [(ngModel)]="order.shipment"><br>
+
+<br>
+<button (click)="placeOrder()">place order</button>

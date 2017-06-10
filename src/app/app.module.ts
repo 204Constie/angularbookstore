@@ -11,6 +11,9 @@ import { ProductsService } from './products/products.service';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './cart/cart.service';
+import { NavComponent } from './nav/nav.component';
+import { OrderComponent } from './cart/order/order.component';
+import { OrderService } from './cart/order/order.service';
 
 
 
@@ -19,7 +22,9 @@ import { CartService } from './cart/cart.service';
     AppComponent,
     ProductsComponent,
     ProductDetailComponent,
-    CartComponent
+    CartComponent,
+    NavComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,8 @@ import { CartService } from './cart/cart.service';
   ],
   providers: [
     ProductsService,
-    CartService
+    CartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

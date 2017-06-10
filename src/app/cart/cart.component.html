@@ -5,7 +5,7 @@
   <li *ngFor="let product of selectedProducts">{{product?.title}} || amount:
     <span *ngFor="let item of cartItems">
       <i *ngIf="product?.id === item.productId">{{item.amount}}
-        <select [(ngModel)]="item.amount">
+        <select [(ngModel)]="item.amount" (change)="calculateTotalAmount()">
           <option>6</option>
           <option>1</option>
           <option>2</option>
@@ -13,10 +13,13 @@
           <option>4</option>
           <option>5</option>
         </select>
-        || price: {{product?.price * item.amount}}
+        || price: {{product?.price * item.amount}} ||
+        <button (click)="removeCartItem(item); removeSelectedProduct(product); calculateTotalAmount()">remove</button>
       </i>
     </span>
   </li>
 </ul>
+
+<p>{{totalAmount}}</p>
 
 <button type="button" (click)="makeOrder()">place order</button>

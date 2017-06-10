@@ -5,4 +5,6 @@
 export class Order {
   id: number;
   totalAmount: number;
+  shipment: String;
+  payment: String;
 }
