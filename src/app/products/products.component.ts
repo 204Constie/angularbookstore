@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ProductsService } from './products.service';
 import { Product } from './products.model';
 import { CartService } from '../cart/cart.service';
+import {Category} from "./category.model";
 
 @Component({
   selector: 'app-products',
@@ -13,11 +14,13 @@ import { CartService } from '../cart/cart.service';
 })
 export class ProductsComponent implements OnInit {
   private books: Product[];
+  private categories: Category[];
 
   constructor(private productsService: ProductsService, private router: Router, private cartService: CartService) { }
 
   ngOnInit() {
     this.getBooks();
+    this.getCategories();
   }
 
   getBooks(){
@@ -29,14 +32,21 @@ export class ProductsComponent implements OnInit {
     );
   };
 
+  getCategories(){
+    this.productsService.getCategories().subscribe(
+      (response: Category[]) => {
+        this.categories = response;
+      },
+      (error: Response) => console.log('couldn\'t get categories')
+    );
+  }
+
   showBook(id: number){
     console.log('id: ', id);
     this.router.navigate(['book', id]);
   };
 
-  showShoppingCart(){
-    this.router.navigate(['cart']);
-  }
+
 
   addToCart(product: Product) {
     this.cartService.addProductToCart(product);

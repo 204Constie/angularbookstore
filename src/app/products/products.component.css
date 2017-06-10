@@ -1,0 +1,44 @@
+/*categorywrapper">*/
+/*<p class="categorywrapper__item categoryname">{{category.name}}</p>*/
+                                                                 /*<div class="categorywrapper__item productswrapper">*/
+/*<div *ngFor="let book of books" class="productswrapper__item product">*/
+/*<div *ngIf="book.categoryId === category.id" class="oneproduct">*/
+/*<p>{{book.author}}</p>*/
+.body {
+  margin: 0;
+}
+.categorywrapper {
+  display: flex;
+  flex-direction: column;
+}
+.categorywrapper__item {
+  background-color: aquamarine;
+  width: 100vw;
+}
+.categoryname {
+
+}
+.productswrapper {
+  background-color: aqua;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: scroll;
+}
+.productswrapper__item {
+  background-color: blueviolet;
+}
+.product {
+  background-color: bisque;
+  width: 20vw;
+  top: 0;
+  height: 100%;
+  margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .product {
+    width: 50vw;
+  }
+}

@@ -1,10 +1,28 @@
-<ul *ngFor="let book of books">
-  <li>
-    {{book.id}} || {{book.author}} || {{book.title}} || {{book.price}} ||
-    <!--<md-button (click)="showBook()" class="md-raised">details</md-button>-->
-    <button type="button" (click)="showBook(book.id)">details</button>
-    <button type="button" (click)="addToCart(book)">add to cart</button>
-  </li>
-</ul>
 
-<button type="button" (click)="showShoppingCart()">shopping cart</button>
+<!--<ul *ngFor="let category of categories">-->
+  <!--<li>{{category.name}}</li>-->
+  <!--<ul *ngFor="let book of books">-->
+  <!--<li *ngIf="book.categoryId === category.id">-->
+    <!--{{book.id}} || {{book.author}} || {{book.title}} || {{book.price}} ||-->
+    <!--<button type="button" (click)="showBook(book.id)">details</button>-->
+    <!--<button type="button" (click)="addToCart(book)">add to cart</button>-->
+  <!--</li>-->
+  <!--</ul>-->
+<!--</ul>-->
+
+<div *ngFor="let category of categories" class="categorywrapper">
+  <p class="categorywrapper__item categoryname">{{category.name}}</p>
+  <div class="categorywrapper__item productswrapper">
+    <div *ngFor="let book of books" class="productswrapper__item">
+      <div *ngIf="book.categoryId === category.id" class="product">
+        <p>{{book.author}}</p>
+        <p>{{book.title}}</p>
+        <p>{{book.price}}</p>
+        <button type="button" (click)="showBook(book.id)">details</button>
+        <button type="button" (click)="addToCart(book)">add to cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
