@@ -45,7 +45,7 @@ export class OrderComponent implements OnInit {
     this.orderService.sendOrder(this.orderId, this.totalAmount, this.order.shipment, this.order.payment).subscribe();
 
     for(let item of this.cartItems){
-      this.orderService.sendCartItem(item.productId, this.orderId, Number(item.amount)).subscribe(
+      this.orderService.sendCartItem(item.productId, this.orderId, Number(item.amount), item.typename).subscribe(
         (response) => console.log(response),
         (error) => console.log('error in posrting cart item'),
         () => this.cartService.removeCartItem(item)

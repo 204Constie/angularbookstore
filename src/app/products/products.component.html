@@ -18,8 +18,12 @@
         <p>{{book.author}}</p>
         <p>{{book.title}}</p>
         <p>{{book.price}}</p>
+        <select [(ngModel)]="data[book.id]">
+          <option>paperback</option>
+          <option>hardcover</option>
+        </select>
         <button type="button" (click)="showBook(book.id)">details</button>
-        <button type="button" (click)="addToCart(book)">add to cart</button>
+        <button type="button" (click)="addToCart(book, book.id)">add to cart</button>
       </div>
     </div>
   </div>

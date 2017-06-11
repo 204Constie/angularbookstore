@@ -22,10 +22,10 @@ export class OrderService {
     )
   }
 
-  sendCartItem(productId: number, orderId: number, amount: number){
+  sendCartItem(productId: number, orderId: number, amount: number, typename: string){
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let data = JSON.stringify({"productId": productId, "orderId": orderId, "amount": amount})
+    let data = JSON.stringify({"productId": productId, "orderId": orderId, "amount": amount, "typename": typename})
     return this.http.post('http://localhost:9000/cartitems', data, options).map(
       (response: Response) => response.json(),
       (error: Response) => console.log('error at making new order')

@@ -6,4 +6,5 @@ export class CartItem {
   productId: number;
   orderId: number;
   amount: number;
+  typename: string;
 }

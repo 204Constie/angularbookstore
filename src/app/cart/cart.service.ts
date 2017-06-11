@@ -23,13 +23,16 @@ export class CartService {
     this.listEmitter$ = new Observable(observer => this._observer = observer).share();
   }
 
-  addCartItem(productId: number, amount: number){
-    if(!this.cartItems.find(item => item.productId === productId)){
+  addCartItem(productId: number, amount: number, typename: string, product: Product){
+    if(!this.cartItems.find(item => (item.productId === productId && item.typename === typename))){
       let c = new CartItem();
       c.amount = amount;
       c.productId = productId;
       c.orderId = 0;
+      c.typename = typename;
       this.cartItems.push(c);
+      this._observer.next(this.cartItems.length);
+      this.addProductToCart(product);
     } else {
       console.log(`product of id: already added to cart`)
     }
@@ -37,12 +40,13 @@ export class CartService {
   removeCartItem(item){
     let idx = this.cartItems.indexOf(item);
     this.cartItems.splice(idx, 1);
+    this._observer.next(this.cartItems.length);
   }
 
   addProductToCart(product){
     if(this.selectedProducts.indexOf(product) === -1){
       this.selectedProducts.push(product);
-      this._observer.next(this.selectedProducts.length);
+      // this._observer.next(this.selectedProducts.length);
     } else {
       console.log(`product already added to cart`)
     }
@@ -50,7 +54,7 @@ export class CartService {
   removeSelectedProduct(product){
     let idx = this.selectedProducts.indexOf(product);
     this.selectedProducts.splice(idx, 1);
-    this._observer.next(this.selectedProducts.length);
+    // this._observer.next(this.selectedProducts.length);
   }
 
 

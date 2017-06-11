@@ -15,6 +15,7 @@ import {Category} from "./category.model";
 export class ProductsComponent implements OnInit {
   private books: Product[];
   private categories: Category[];
+  private data = {};
 
   constructor(private productsService: ProductsService, private router: Router, private cartService: CartService) { }
 
@@ -48,9 +49,10 @@ export class ProductsComponent implements OnInit {
 
 
 
-  addToCart(product: Product) {
-    this.cartService.addProductToCart(product);
-    this.cartService.addCartItem(product.id, 1);
+  addToCart(product: Product, id: number) {
+    console.log('addtocart: ', this.data);
+    // this.cartService.addProductToCart(product);
+    this.cartService.addCartItem(product.id, 1, this.data[id], product);
   }
 
 }
