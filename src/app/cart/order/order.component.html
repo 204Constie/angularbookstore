@@ -1,29 +1,45 @@
-<p>your items:</p>
+<div class="wrap">
+<h2>selected books:</h2>
 <ul>
-  <li *ngFor="let product of selectedProducts">{{product?.title}} || amount:
+  <li *ngFor="let product of selectedProducts">
+    <div class="title">{{product?.title}}</div>
     <span *ngFor="let item of cartItems">
-      <i *ngIf="product?.id === item.productId">{{item.amount}}
-        || price: {{product?.price * item.amount}}
-      </i>
+      <span *ngIf="product?.id === item.productId" class="details">
+        <div class="typename">{{item.typename}}</div>
+        <div class="amount">{{item.amount}}</div>
+        <div class="price">price: {{product?.price * item.amount}} PLN,-</div>
+      </span>
     </span>
   </li>
 </ul>
 
 
-
+<form #form="ngForm" (ngSubmit)="placeOrder()">
 <p>choose method of payment</p>
-
-<label for="cardpayment">card</label>
-<input type="radio" name="paymentmethod" value="card" id="cardpayment" [(ngModel)]="order.payment"><br>
-<label for="transferpayment">transfer</label>
-<input type="radio" name="paymentmethod" value="transfer" id="transferpayment" [(ngModel)]="order.payment"><br>
+<div class="rowelements">
+  <div class="radioitem form-group">
+    <label for="cardpayment">card <i class="fa fa-credit-card" aria-hidden="true"></i></label>
+    <input type="radio" name="paymentmethod" value="card" id="cardpayment" [(ngModel)]="order.payment" required><br>
+  </div>
+  <div class="radioitem form-group">
+    <label for="transferpayment">transfer <i class="fa fa-money" aria-hidden="true"></i></label>
+    <input type="radio" name="paymentmethod" value="transfer" id="transferpayment" [(ngModel)]="order.payment"><br>
+  </div>
+</div>
 
 <p>choose method of shipping</p>
-
-<label for="inpost">inpost</label>
-<input type="radio" name="shippingmethod" value="inpost" id="inpost" [(ngModel)]="order.shipment"><br>
-<label for="courier">courier</label>
-<input type="radio" name="shippingmethod" value="courier" id="courier" [(ngModel)]="order.shipment"><br>
+<div class="rowelements">
+  <div class="radioitem form-group">
+    <label for="inpost">inpost</label>
+    <input type="radio" name="shippingmethod" value="inpost" id="inpost" [(ngModel)]="order.shipment" required><br>
+  </div>
+  <div class="radioitem form-group">
+    <label for="courier">courier</label>
+    <input type="radio" name="shippingmethod" value="courier" id="courier" [(ngModel)]="order.shipment"><br>
+  </div>
+</div>
 
 <br>
-<button (click)="placeOrder()">place order</button>
+<button [disabled]="!form.valid" type="submit">place order</button>
+</form>
+</div>

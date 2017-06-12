@@ -1,0 +1,35 @@
+.mwrap {
+  display: flex;
+  flex-direction: column;
+  padding: 7%;
+}
+
+.cartitemwrapper {
+  margin-left: 10%;
+  display: flex;
+  flex-direction: row;
+}
+ul {
+  padding-left: 0;
+}
+
+button {
+  height: 20px;
+  margin: 3px 10px;
+  width: 10%;
+}
+
+.typename {
+  margin: 0 10px;
+}
+
+select {
+  margin: 0 10px;
+  background: transparent;
+}
+
+.totalamount {
+  margin: 0 10px;
+}
+
+

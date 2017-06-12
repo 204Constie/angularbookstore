@@ -1,4 +1,5 @@
-<div>
-  {{book?.id}} || {{book?.author}} || {{book?.title}} || {{book?.category_id}} || {{book?.price}}
+<div class="bookwrapper">
+  <p class="author">{{book?.author}}</p> <p class="title"><i>{{book?.title}}</i></p> <p class="price">{{book?.price}} PLN,-</p>
+  <button class="buttonbook" type="button" (click)="navigateBack()">back</button>
 </div>
-<button type="button" (click)="navigateBack()">back</button>
+

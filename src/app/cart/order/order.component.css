@@ -1,0 +1,38 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+
+  padding: 7%;
+}
+
+.rowelements {
+  display: flex;
+  flex-direction: row;
+}
+
+.radioitem {
+  margin: 5px 10px;
+}
+
+button {
+  max-width: 10%;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.amount {
+  margin: 0 10px;
+
+}
+
+.price {
+  margin: 0 10px;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}

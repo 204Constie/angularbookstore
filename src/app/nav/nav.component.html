@@ -1,6 +1,10 @@
-<div>
+<div class="navwrapper">
 
-  <span><i class="fa fa-shopping-cart" aria-hidden="true"></i>{{ cartItemsAmount }}</span>
-  <button type="button" (click)="showShoppingCart()">shopping cart</button>
+  <div class="navlogo"><a href="/">myBookstore</a></div>
+
+  <div class="navdata">
+    <span (click)="showShoppingCart()"> shopping cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> {{ cartItemsAmount }}</span>
+    <!--<button type="button" (click)="showShoppingCart()">shopping cart</button>-->
+  </div>
 
 </div>

@@ -37,9 +37,12 @@ export class CartComponent implements OnInit {
     }
   }
 
-  removeCartItem(item){
+  removeCartItem(item, product){
     this.cartService.removeCartItem(item);
     this.cartItems = this.cartService.cartItems;
+    if(!this.cartItems.find(item => item.productId === product.id)){
+      this.removeSelectedProduct(product);
+    }
   }
   removeSelectedProduct(product){
     this.cartService.removeSelectedProduct(product);
@@ -54,6 +57,10 @@ export class CartComponent implements OnInit {
       () => this.router.navigate(['order', this.orderId, this.totalAmount])
     )
 
+  }
+
+  navigateBack(){
+    this.router.navigate(['']);
   }
 
 }

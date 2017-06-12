@@ -4,41 +4,73 @@
 /*<div *ngFor="let book of books" class="productswrapper__item product">*/
 /*<div *ngIf="book.categoryId === category.id" class="oneproduct">*/
 /*<p>{{book.author}}</p>*/
-.body {
-  margin: 0;
-}
+
 .categorywrapper {
   display: flex;
   flex-direction: column;
 }
 .categorywrapper__item {
-  background-color: aquamarine;
+  /*background-color: aquamarine;*/
   width: 100vw;
+  /*border-bottom: 1px solid #879dbf;*/
 }
 .categoryname {
-
+  padding-left: 5%;
+  font-size: 1.5em;
 }
 .productswrapper {
-  background-color: aqua;
+  /*background-color: aqua;*/
   width: 100vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   overflow: scroll;
 }
 .productswrapper__item {
-  background-color: blueviolet;
+  /*background-color: blueviolet;*/
+  background-color: #b6ccef;
 }
 .product {
-  background-color: bisque;
+
   width: 20vw;
   top: 0;
   height: 100%;
   margin: 0;
+  position: relative;
 }
 
 @media only screen and (max-width: 600px) {
   .product {
     width: 50vw;
   }
+}
+
+.author {
+  padding: 3%;
+  font-weight: bold;
+}
+.title {
+  padding: 3%;
+}
+
+.price {
+  padding: 3%;
+}
+
+.details {
+  margin-bottom: 40px;
+}
+
+.bottombtn {
+  position: absolute;
+  bottom: 20px;
+  minheight: 20px;
+}
+
+select {
+  background: transparent;
+}
+
+select:focus {
+  outline: none;
 }

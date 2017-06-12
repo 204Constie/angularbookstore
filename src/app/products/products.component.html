@@ -15,15 +15,15 @@
   <div class="categorywrapper__item productswrapper">
     <div *ngFor="let book of books" class="productswrapper__item">
       <div *ngIf="book.categoryId === category.id" class="product">
-        <p>{{book.author}}</p>
-        <p>{{book.title}}</p>
-        <p>{{book.price}}</p>
-        <select [(ngModel)]="data[book.id]">
-          <option>paperback</option>
-          <option>hardcover</option>
+        <div class="author">{{book.author}}</div>
+        <div class="title"><i>{{book.title}}</i></div>
+        <div class="price">{{book.price}} PLN,-</div>
+        <div class="details"><button type="button" (click)="showBook(book.id)">details</button></div>
+        <div class="bottombtn"><select [(ngModel)]="data[book.id]">
+          <option value="paperback" selected="selected">paperback</option>
+          <option value="hardcover">hardcover</option>
         </select>
-        <button type="button" (click)="showBook(book.id)">details</button>
-        <button type="button" (click)="addToCart(book, book.id)">add to cart</button>
+        <button type="button" (click)="addToCart(book, book.id)">add to cart</button></div>
       </div>
     </div>
   </div>

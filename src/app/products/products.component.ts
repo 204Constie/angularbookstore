@@ -29,7 +29,12 @@ export class ProductsComponent implements OnInit {
       (response: Product[]) => {
         this.books = response;
       },
-      (error: Response) => console.log('couldn\'t get products')
+      (error: Response) => console.log('couldn\'t get products'),
+      () => {
+        for(let book of this.books){
+          this.data[book.id] = 'paperback';
+        }
+      }
     );
   };
 
@@ -52,7 +57,14 @@ export class ProductsComponent implements OnInit {
   addToCart(product: Product, id: number) {
     console.log('addtocart: ', this.data);
     // this.cartService.addProductToCart(product);
-    this.cartService.addCartItem(product.id, 1, this.data[id], product);
+    if(this.data[id]){
+      this.cartService.addCartItem(product.id, 1, this.data[id], product);
+    } else {
+      console.log('choose type')
+    }
+
   }
+
+
 
 }

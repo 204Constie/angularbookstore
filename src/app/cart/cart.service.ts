@@ -24,7 +24,8 @@ export class CartService {
   }
 
   addCartItem(productId: number, amount: number, typename: string, product: Product){
-    if(!this.cartItems.find(item => (item.productId === productId && item.typename === typename))){
+
+    if( !this.cartItems.find(item => (item.productId === productId && item.typename === typename)) ){
       let c = new CartItem();
       c.amount = amount;
       c.productId = productId;

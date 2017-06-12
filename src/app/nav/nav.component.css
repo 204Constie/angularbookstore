@@ -1,0 +1,23 @@
+.navwrapper {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-around;
+
+  background-color: #94a4ba;
+}
+
+.navlogo {
+
+}
+
+.navdata {
+  padding: 2px;
+  /*margin: 0 auto;*/
+}
+
+.navdata:hover {
+  background-color: #73a2e2;
+  cursor: pointer;
+}
